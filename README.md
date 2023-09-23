@@ -2,7 +2,7 @@
 
 ## Used in the Project 
 - [Angular 16][ngdocumentation] 
-- [.Net Web API6][dotnetdocumentationt]
+- [.Net Web API 6][dotnetdocumentationt]
 
 [ngdocumentation]: https://angular.io/
 [dotnetdocumentationt]: https://learn.microsoft.com/en-us/dotnet/core/whats-new/dotnet-6
