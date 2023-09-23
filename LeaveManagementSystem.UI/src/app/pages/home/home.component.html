@@ -1,0 +1,23 @@
+<div *ngIf="!isAuthenticated()">
+  <app-login></app-login>
+</div>
+<div *ngIf="isAuthenticated()" style="color: green">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand">Employees Management System</a>
+      <a (click)="LeaveRequest()">Apply LeaveRequest</a>
+      <a (click)="LeaveRequest()">Sub-ordinates dashboard</a>
+      <div class="d-flex input-group w-auto">
+        <a class="btn btn-primary" (click)="logOut()">Logout</a>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<div *ngIf="LeaveRequestFlag && isAuthenticated()">
+  <app-employee-leave-request></app-employee-leave-request>
+</div>
+
+<div *ngIf="!LeaveRequestFlag && isAuthenticated()">
+  <app-manager-subordinates></app-manager-subordinates>
+</div>

@@ -1,0 +1,63 @@
+<div class="col-12 col-md-8 m-auto mt-5">
+  <div *ngIf="data.length <= 0">You dont't have subordinates</div>
+
+  <div *ngIf="data.length > 0">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Deparment</th>
+          <th>Annual Balance</th>
+          <th>Sick Balance</th>
+          <th>Requests</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let emp of data">
+          <td>{{ emp.fullName }}</td>
+          <td>{{ emp.department }}</td>
+          <td>{{ emp.annualLeaveBalance }}</td>
+          <td>{{ emp.sickLeaveBalance }}</td>
+          <td>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>leaveTypeName</th>
+                  <th>From</th>
+                  <th>To</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let request of emp.leaveRequestItemDtos">
+                  <td>{{ request.leaveTypeName }}</td>
+                  <td>{{ request.startDate | date }}</td>
+                  <td>{{ request.endDate | date }}</td>
+                  <td>
+                    <div
+                      *ngIf="
+                        request.isApproved == null &&
+                        request.isCancelled == null
+                      "
+                    >
+                      <button class="btn btn-sm btn-success" (click)="ApproveRequest(request.id)">Approve</button>
+                      <button class="btn btn-sm btn-danger" (click)="RejectRequest(request.id)">Reject</button>
+                      <!--                   <button class="btn btn-sm btn-warning">Cancel</button>
+       -->
+                    </div>
+                    <div *ngIf="request.isApproved">
+                      <span class="text-success">Approved</span>
+                    </div>
+                    <div *ngIf="request.isApproved == false">
+                      <span class="text-danger">rejected</span>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
