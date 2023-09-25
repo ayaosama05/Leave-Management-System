@@ -1,0 +1,11 @@
+- fluent validation
+
+- clean architecture
+
+- Handling Exceptions
+
+- Swagger documentation
+
+- Exclude holidays from vacation period
+
+- logout
